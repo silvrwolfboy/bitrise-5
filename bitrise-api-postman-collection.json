@@ -1,0 +1,135 @@
+{
+    "id": "226d94574da1a99cb6f1297164b14bc3",
+    "name": "Bitrise API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "ecd175aa0c3b1207e2a3e1ca96ac2e66",
+            "name": "Get list of available Bitrise addons",
+            "url": "http:\/\/api.bitrise.io\/v0.1\/addons",
+            "description": "List all the available Bitrise addons",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "rawModeData": ""
+        },
+        {
+            "id": "b85428e7fe43e9c96b301b07b228895f",
+            "name": "Get a specific Bitrise addon",
+            "url": "http:\/\/api.bitrise.io\/v0.1\/addons\/{addon-id}",
+            "description": "Show details of a specific Bitrise addon",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "addon-id",
+                    "description": "Addon ID",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "rawModeData": ""
+        },
+        {
+            "id": "f19dec045a7e32bc972bbc4f82998dab",
+            "name": "Get list of the apps",
+            "url": "http:\/\/api.bitrise.io\/v0.1\/apps",
+            "description": "List all the apps available for the authenticated account, including those that are owned by other users or Organizations.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "sort_by",
+                    "description": "Order of the applications: sort them based on when they were created or the time of their last build",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "next",
+                    "description": "Slug of the first app in the response",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "limit",
+                    "description": "Max number of elements per page (default: 50)",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "rawModeData": ""
+        },
+        {
+            "id": "572b854fbe2f19c5048a19c11c383a47",
+            "name": "Add a new app",
+            "url": "http:\/\/api.bitrise.io\/v0.1\/apps\/register",
+            "description": "Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https:\/\/devcenter.bitrise.io\/api\/adding-and-managing-apps\/#adding-a-new-app).",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "rawModeData": ""
+        }
+    ]
+}
