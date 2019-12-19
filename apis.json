@@ -1,0 +1,117 @@
+{
+    "name": "Bitrise",
+    "description": "Bringing back the joy of iOS & Android development through automating build, testing and support cycles.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/28819-www-bitrise-io.jpg",
+    "tags": [
+        "access controls",
+        "artifact info",
+        "build",
+        "code sign",
+        "dependency",
+        "deploy",
+        "have api",
+        "have swagger",
+        "installer",
+        "notification",
+        "profile",
+        "test",
+        "workflow"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/bitrise\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Bitrise",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/28819-www-bitrise-io.jpg",
+            "humanURL": "https:\/\/www.bitrise.io",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/bitrise-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/bitrise.json"
+                }
+            ]
+        },
+        {
+            "name": "Bitrise API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/28819-www-bitrise-io.jpg",
+            "humanURL": "https:\/\/www.bitrise.io",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/bitrise-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/bitrise-api.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Command Line Interface",
+            "url": "https:\/\/devcenter.bitrise.io\/bitrise-cli\/index\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/bitrise"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/devcenter.bitrise.io\/"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/devcenter.bitrise.io\/"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/devcenter.bitrise.io\/api\/api-index\/"
+        },
+        {
+            "type": "Documentation",
+            "url": "https:\/\/devcenter.bitrise.io\/api\/v0.1\/"
+        },
+        {
+            "type": "FAQ",
+            "url": "https:\/\/devcenter.bitrise.io\/faq\/faq-index\/"
+        },
+        {
+            "type": "Getting Started",
+            "url": "https:\/\/devcenter.bitrise.io\/getting-started\/index\/"
+        },
+        {
+            "type": "Integrations",
+            "url": "https:\/\/www.bitrise.io\/integrations\/steps"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28819-2019-09-03-15-33-37.json"
+        },
+        {
+            "type": "Pricing",
+            "url": "https:\/\/www.bitrise.io\/pricing"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/bitrise"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/www.bitrise.io"
+        }
+    ]
+}
