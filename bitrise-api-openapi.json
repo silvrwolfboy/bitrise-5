@@ -1,0 +1,2228 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "0.1",
+        "title": "Bitrise API",
+        "description": "Official REST API for Bitrise.io",
+        "termsOfService": "http:\/\/exmple.com\/license\/"
+    },
+    "servers": [
+        "http:\/\/api.bitrise.io\/v0.1"
+    ],
+    "paths": {
+        "\/addons": {
+            "get": {
+                "summary": "Get list of available Bitrise addons",
+                "description": "List all the available Bitrise addons",
+                "operationId": "AddonsList",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/v0.AddonsListResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/addons\/{addon-id}": {
+            "get": {
+                "summary": "Get a specific Bitrise addon",
+                "description": "Show details of a specific Bitrise addon",
+                "operationId": "AddonsShow",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "addon-id",
+                        "in": "path",
+                        "description": "Addon ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/v0.AddonsListResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/apps": {
+            "get": {
+                "summary": "Get list of the apps",
+                "description": "List all the apps available for the authenticated account, including those that are owned by other users or Organizations.",
+                "operationId": "AppList",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Order of the applications: sort them based on when they were created or the time of their last build"
+                    },
+                    {
+                        "name": "next",
+                        "in": "query",
+                        "description": "Slug of the first app in the response"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Max number of elements per page (default: 50)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/v0.AddonsListResponseModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/apps\/register": {
+            "post": {
+                "summary": "Add a new app",
+                "description": "Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https:\/\/devcenter.bitrise.io\/api\/adding-and-managing-apps\/#adding-a-new-app).",
+                "operationId": "AppCreate",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "addons.Addon": {
+                "type": "object",
+                "properties": {
+                    "banner_image": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "card_header_colors": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "categories": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "dashboard_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "developer_links": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "documentation_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "icon": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "plans": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "platforms": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "preview_images": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "setup_guide": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "subtitle": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "summary": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "card_header_colors": {
+                "type": "array"
+            },
+            "categories": {
+                "type": "array"
+            },
+            "developer_links": {
+                "type": "array"
+            },
+            "plans": {
+                "type": "array"
+            },
+            "platforms": {
+                "type": "array"
+            },
+            "preview_images": {
+                "type": "array"
+            },
+            "addons.DeveloperLink": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "addons.Feature": {
+                "type": "object",
+                "properties": {
+                    "available": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "addons.Plan": {
+                "type": "object",
+                "properties": {
+                    "features": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "features": {
+                "type": "array"
+            },
+            "service.StandardErrorRespModel": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ActivityEventListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "data": {
+                "type": "object"
+            },
+            "paging": {
+                "type": "object"
+            },
+            "v0.ActivityEventResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "created_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "event_icon": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "event_stype": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repository_avatar_icon_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repository_title": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "target_path_string": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AddOnAppResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "icon": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addons.Plan": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "plan": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "plan_started_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "plan": {
+                "type": "object"
+            },
+            "v0.AddonsListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.AddonsShowResponseModel": {
+                "type": "object",
+                "properties": {
+                    "addons.Addon": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AndroidKeystoreFileUploadParams": {
+                "type": "object",
+                "properties": {
+                    "alias": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "private_key_password": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.AppAddOnResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "dashboard_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "documentation_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "icon": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "addons.Plan": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "plan": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "summary": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppAddOnsListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.AppConfigRequestParam": {
+                "type": "object",
+                "properties": {
+                    "app_config_datastore_yaml": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppConfigRespModel": {
+                "type": "object"
+            },
+            "v0.AppFinishParams": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "description": "Which config to use `default-android-config`, `default-cordova-config`, `default-fastlane-config`, `default-ionic-config`, `default-ios-config`,`default-macos-config`, `default-react-native-config`, `default-xamarin-config`, `other-config` (default if parameter is not speficied)",
+                        "type": "string"
+                    },
+                    "envs": {
+                        "description": "Environment variables for the application workflows, e.g. {\"env1\":\"val1\",\"env2\":\"val2\"}",
+                        "type": "object"
+                    },
+                    "mode": {
+                        "description": "config specification mode, has to be specified with `manual` value",
+                        "type": "string"
+                    },
+                    "organization_slug": {
+                        "description": "The slug of the organization, who will be the owner of the application, if it's not specified, then the authenticated user will be the owner",
+                        "type": "string"
+                    },
+                    "project_type": {
+                        "description": "The type of your project (`android`, `ios`, `cordova`, `other`, `xamarin`, `macos`, `ionic`, `react-native`, `fastlane`, null)",
+                        "type": "string"
+                    },
+                    "stack_id": {
+                        "description": "The id of the stack the application will be built (these can be found in the [system report](https:\/\/github.com\/bitrise-io\/bitrise.io\/tree\/master\/system_reports) file names)",
+                        "type": "string"
+                    }
+                }
+            },
+            "envs": {
+                "type": "object"
+            },
+            "v0.AppFinishRespModel": {
+                "type": "object",
+                "properties": {
+                    "branch_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "build_trigger_token": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_webhook_auto_reg_supported": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AppRespModel": {
+                "type": "object",
+                "properties": {
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "avatar_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_disabled": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_public": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "owner": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "project_type": {
+                        "description": "The type of your project (`android`, `ios`, `cordova`, `other`, `xamarin`, `macos`, `ionic`, `react-native`, `fastlane`, null)",
+                        "type": "string"
+                    },
+                    "provider": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repo_owner": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repo_slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repo_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "owner": {
+                "type": "object"
+            },
+            "v0.AppShowResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.AppResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AppUploadParams": {
+                "type": "object",
+                "properties": {
+                    "git_owner": {
+                        "description": "The slug of the owner of the repository at the git provider",
+                        "type": "string"
+                    },
+                    "git_repo_slug": {
+                        "description": "The slug of the repository at the git provider",
+                        "type": "string"
+                    },
+                    "is_public": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "provider": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "repo_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "It has to be provided by legacy reasons and has to have the `git` value",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppWebhookCreateParams": {
+                "type": "object",
+                "properties": {
+                    "events": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "headers": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "secret": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppWebhookCreatedResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AppWebhookDeletedResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AppWebhookListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AppWebhookResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "created_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "events": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "headers": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "registered_by_addon": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AppWebhookResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.AppWebhookResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.AppWebhookUpdateParams": {
+                "type": "object",
+                "properties": {
+                    "events": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "headers": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ArtifactDeleteResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ArtifactListElementResponseModel": {
+                "type": "object",
+                "properties": {
+                    "artifact_meta": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "artifact_type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "file_size_bytes": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "is_public_page_enabled": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ArtifactListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ArtifactResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "artifact_meta": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "artifact_type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "expiring_download_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "file_size_bytes": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "is_public_page_enabled": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "public_install_page_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ArtifactShowResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.ArtifactResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ArtifactUpdateParams": {
+                "type": "object",
+                "properties": {
+                    "is_public_page_enabled": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.AvatarCandidateCreateBulkParams": {
+                "type": "array"
+            },
+            "v0.AvatarCandidateCreateParams": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "filesize": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.AvatarCandidateCreateResponseItem": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "filesize": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.AvatarCandidateCreateResponseItems": {
+                "type": "array"
+            },
+            "v0.AvatarPromoteParams": {
+                "type": "object",
+                "properties": {
+                    "is_promoted": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.AvatarPromoteResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "is_candidate": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.AvatarPromoteResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.AvatarPromoteResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BranchListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.BuildAbortParams": {
+                "type": "object",
+                "properties": {
+                    "abort_reason": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "abort_with_success": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "skip_notifications": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.BuildAbortResponseModel": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildCertificateListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BuildCertificateResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "certificate_password": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "download_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_expose": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_protected": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "processed": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "upload_url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildCertificateResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.BuildCertificateResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BuildCertificateUpdateParams": {
+                "type": "object",
+                "properties": {
+                    "certificate_password": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_expose": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_protected": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "processed": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.BuildCertificateUploadParams": {
+                "type": "object",
+                "properties": {
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.BuildListAllResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "abort_reason": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "build_number": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "commit_hash": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_message": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_view_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "environment_prepare_finished_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "finished_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_on_hold": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "original_build_params": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "pull_request_target_branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_view_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "v0.AppResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "repository": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "stack_config_type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "stack_identifier": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "started_on_worker_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "status_text": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "tag": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_by": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_workflow": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "repository": {
+                "type": "object"
+            },
+            "v0.BuildListAllResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BuildListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BuildLogChunkItemResponseModel": {
+                "type": "object",
+                "properties": {
+                    "chunk": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "position": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.BuildLogInfoResponseModel": {
+                "type": "object",
+                "properties": {
+                    "expiring_raw_log_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "generated_log_chunks_num": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "is_archived": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "log_chunks": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "timestamp": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "log_chunks": {
+                "type": "array"
+            },
+            "v0.BuildParamsEnvironment": {
+                "type": "object",
+                "properties": {
+                    "is_expand": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "mapped_to": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildRequestListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.BuildRequestResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "build_params": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildRequestUpdateParams": {
+                "type": "object",
+                "properties": {
+                    "is_approved": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.BuildRequestUpdateResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.BuildRequestResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BuildResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "abort_reason": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "build_number": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "commit_hash": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_message": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_view_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "environment_prepare_finished_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "finished_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_on_hold": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "original_build_params": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "pull_request_target_branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_view_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "stack_config_type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "stack_identifier": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "started_on_worker_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "status_text": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "tag": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_by": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_workflow": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildShowResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.BuildResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.BuildTriggerParams": {
+                "type": "object",
+                "properties": {
+                    "build_params": {
+                        "description": "Reference",
+                        "type": "object"
+                    },
+                    "hook_info": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "build_params": {
+                "type": "object"
+            },
+            "hook_info": {
+                "type": "object"
+            },
+            "v0.BuildTriggerParamsBuildParams": {
+                "type": "object",
+                "properties": {
+                    "branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "branch_dest": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "branch_dest_repo_owner": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "branch_repo_owner": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "build_request_slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_hash": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_message": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "commit_paths": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "diff_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "environments": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "pull_request_author": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_head_branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_id": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "pull_request_merge_branch": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "pull_request_repository_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "skip_git_status_report": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "tag": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "workflow_id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "commit_paths": {
+                "type": "array"
+            },
+            "environments": {
+                "type": "array"
+            },
+            "pull_request_id": {
+                "type": "object"
+            },
+            "v0.BuildTriggerParamsHookInfo": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "description": "It has to be provided by legacy reasons and has to have the `git` value",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildTriggerRespModel": {
+                "type": "object",
+                "properties": {
+                    "build_number": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "build_slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "build_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "message": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "service": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "triggered_workflow": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.BuildWorkflowListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.CommitPaths": {
+                "type": "object",
+                "properties": {
+                    "added": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "modified": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "removed": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "added": {
+                "type": "array"
+            },
+            "modified": {
+                "type": "array"
+            },
+            "removed": {
+                "type": "array"
+            },
+            "v0.FindAvatarCandidateResponse": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.FindAvatarCandidateResponseItem": {
+                "type": "object",
+                "properties": {
+                    "download_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "filename": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.OrganizationDataModel": {
+                "type": "object",
+                "properties": {
+                    "avatar_icon_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "concurrency_count": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "owners": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "owners": {
+                "type": "array"
+            },
+            "v0.OrganizationListRespModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.OrganizationOwner": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.OrganizationRespModel": {
+                "type": "object",
+                "properties": {
+                    "v0.OrganizationDataModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.OwnerAccountResponseModel": {
+                "type": "object",
+                "properties": {
+                    "account_type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.OwnerAddOnResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "apps": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "dashboard_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "documentation_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "icon": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "summary": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "apps": {
+                "type": "array"
+            },
+            "v0.OwnerAddOnsListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.PagingResponseModel": {
+                "type": "object",
+                "properties": {
+                    "next": {
+                        "description": "Next is the \"anchor\" for pagination. This value should be passed to the same endpoint\nto get the next page. Empty\/not included if there's no \"next\" page.\nStop paging when there's no \"Next\" item in the response!",
+                        "type": "string"
+                    },
+                    "page_item_limit": {
+                        "description": "PageItemLimit - per-page item count. A given page might include\nless items if there's not enough items. This value is the \"max item count per page\".",
+                        "type": "integer"
+                    },
+                    "total_item_count": {
+                        "description": "TotalItemCount - total item count, through \"all pages\"",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.PlanDataModel": {
+                "type": "object",
+                "properties": {
+                    "container_count": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "expires_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.ProjectFileStorageDocumentUpdateParams": {
+                "type": "object",
+                "properties": {
+                    "exposed_meta_datastore": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_expose": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_protected": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "processed": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "user_env_key": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ProjectFileStorageListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "v0.PagingResponseModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ProjectFileStorageResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "download_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "exposed_meta_datastore": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_expose": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_protected": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "processed": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "upload_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "user_env_key": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ProjectFileStorageResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.ProjectFileStorageResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ProjectFileStorageUploadParams": {
+                "type": "object",
+                "properties": {
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "user_env_key": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ProvProfileDocumentUpdateParams": {
+                "type": "object",
+                "properties": {
+                    "is_expose": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_protected": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "processed": {
+                        "description": "",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.ProvisionProfileListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "v0.PagingResponseModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "paging": {
+                        "description": "Reference",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ProvisionProfileResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "download_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "is_expose": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "is_protected": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "processed": {
+                        "description": "",
+                        "type": "boolean"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "upload_url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.ProvisionProfileResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.ProvisionProfileResponseItemModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.ProvisionProfileUploadParams": {
+                "type": "object",
+                "properties": {
+                    "upload_file_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "upload_file_size": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "v0.SSHKeyRespModel": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.SSHKeyUploadParams": {
+                "type": "object",
+                "properties": {
+                    "auth_ssh_private_key": {
+                        "description": "The private part of the SSH key you would like to use",
+                        "type": "string"
+                    },
+                    "auth_ssh_public_key": {
+                        "description": "The public part of the SSH key you would like to use",
+                        "type": "string"
+                    },
+                    "is_register_key_into_provider_service": {
+                        "description": "If it's set to true, the provided SSH key will be registered at the provider of the application",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v0.TestDeviceListResponseModel": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "v0.TestDeviceResponseItemModel": {
+                "type": "object",
+                "properties": {
+                    "device_id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "device_type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "owner": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.UserPlanDataModel": {
+                "type": "object",
+                "properties": {
+                    "v0.PlanDataModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "current_plan": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "pending_plan": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "trial_expires_at": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "current_plan": {
+                "type": "object"
+            },
+            "pending_plan": {
+                "type": "object"
+            },
+            "v0.UserPlanRespModel": {
+                "type": "object",
+                "properties": {
+                    "v0.UserPlanDataModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.UserProfileDataModel": {
+                "type": "object",
+                "properties": {
+                    "avatar_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "unconfirmed_email": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.UserProfileRespModel": {
+                "type": "object",
+                "properties": {
+                    "v0.UserProfileDataModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.WebhookDeliveryItemResponseModel": {
+                "type": "object",
+                "properties": {
+                    "created_at": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "request_headers": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "request_payload": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "request_url": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "response_body": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "response_headers": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "response_http_status": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "response_seconds": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "slug": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "v0.WebhookDeliveryItemShowResponseModel": {
+                "type": "object",
+                "properties": {
+                    "v0.WebhookDeliveryItemResponseModel": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "v0.WebhookRespModel": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
