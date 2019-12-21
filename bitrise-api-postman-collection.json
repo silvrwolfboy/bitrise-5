@@ -1,5 +1,5 @@
 {
-    "id": "226d94574da1a99cb6f1297164b14bc3",
+    "id": "e93b5e89b2146fdfcb7192c19bf75805",
     "name": "Bitrise API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "ecd175aa0c3b1207e2a3e1ca96ac2e66",
+            "id": "76c7d21f2564e006925ae31f44276213",
             "name": "Get list of available Bitrise addons",
             "url": "http:\/\/api.bitrise.io\/v0.1\/addons",
             "description": "List all the available Bitrise addons",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "collectionId": "e93b5e89b2146fdfcb7192c19bf75805",
             "rawModeData": ""
         },
         {
-            "id": "b85428e7fe43e9c96b301b07b228895f",
+            "id": "c35f31aff87a858967023db9feb79afb",
             "name": "Get a specific Bitrise addon",
             "url": "http:\/\/api.bitrise.io\/v0.1\/addons\/{addon-id}",
             "description": "Show details of a specific Bitrise addon",
@@ -60,11 +60,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "collectionId": "e93b5e89b2146fdfcb7192c19bf75805",
             "rawModeData": ""
         },
         {
-            "id": "f19dec045a7e32bc972bbc4f82998dab",
+            "id": "8fade8fa422d7dc066accaffc746be2d",
             "name": "Get list of the apps",
             "url": "http:\/\/api.bitrise.io\/v0.1\/apps",
             "description": "List all the apps available for the authenticated account, including those that are owned by other users or Organizations.",
@@ -105,11 +105,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "collectionId": "e93b5e89b2146fdfcb7192c19bf75805",
             "rawModeData": ""
         },
         {
-            "id": "572b854fbe2f19c5048a19c11c383a47",
+            "id": "bacf52ae9a9376201d142bdebb7a8f85",
             "name": "Add a new app",
             "url": "http:\/\/api.bitrise.io\/v0.1\/apps\/register",
             "description": "Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https:\/\/devcenter.bitrise.io\/api\/adding-and-managing-apps\/#adding-a-new-app).",
@@ -128,7 +128,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "226d94574da1a99cb6f1297164b14bc3",
+            "collectionId": "e93b5e89b2146fdfcb7192c19bf75805",
             "rawModeData": ""
         }
     ]
